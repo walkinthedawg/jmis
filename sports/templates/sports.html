@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+        <div id="masthead">
+            <div class="container">
+                <div class="row">
+                    <h1>List of all Sports</h1>
+                </div>
+            </div>
+        </div>
+    {% for sport in sports %}
+        <div class="row">
+            <div class="col-md-2 col-sm-3 text-center">
+                <a class="story-img" href="#">
+                    <img src="{{ MEDIA_URL }}{{ sport.image }}" class="img-circle" alt="{{ sport.alt }}">
+                </a>
+                <p><span class="boldtext">{{ sport.name }}</span></p>
+            </div>
+            <div class="col-md-10 col-sm-9">
+                <h3>{{ sport.name }}</h3>
+                <div class="row">
+                    <div class="col-xs-9">
+                        <p>{{ sport.desc|truncatewords:30 }}</p>
+                        <p><a href="{% url 'sport_detail' sport.id %}"  class="btn btn-default">Read more...</a></p>
+                        <p><span class="boldtext">Wiki:</span><a href="{{ sport.wiki }}" target="_blank">   {{ sport.wiki }}</a></p>
+                        <p><span class="boldtext">Alt Tag:</span>{{ sport.alt }}</p>
+                        <p><span class="boldtext">ID:</span>{{ sport.id }}</p>
+                        <p><span class="boldtext">Number of people with this sport:</span>{{ sport.count }}</p>
+                        <p><span class="boldtext">List of people:</span>{{ sport.users }}</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    {% endfor %}
+{% endblock %}

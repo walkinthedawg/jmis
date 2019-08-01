@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-2 col-sm-3 text-center">
+            <a class="story-img" href="#">
+                <img src="/media/images/icon.jpg" class="img-circle">
+            </a>
+            <p><span class="boldtext">Author:</span> sport detail page here</p>
+        </div>
+        <div class="col-sm-10 col-md-9">
+            {% if sport.image %}
+                <img class="img-blogpost" src="/media/images{{ sport.image }}">
+            {% endif %}
+            <h3>{{ sport.name }}</h3>
+            <div class="row">
+                <div class="col-xs-9">
+                    <p>{{ sport.desc }}</p>
+                    <p><span class="boldtext">Wiki:</span> {{ sport.wiki }} </p>
+                    <p><span class="boldtext">Alt Tag:</span> {{ sport.alt }}</p>
+                    <a href="{% url 'get_sports' %}" class="btn btn-default">Back to Sports</a>
+                    <a href="{% url 'edit_sport' sport.id %}" class="btn btn-default">Edit Sport</a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
