@@ -18,7 +18,6 @@ from . import views
 from .views import get_sports, sport_detail, create_or_edit_sport, sports
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^$', sports, name='sports'),
     url(r'^$', views.index, name='index'),
     url(r'^about', views.about, name='about'),
